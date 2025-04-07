@@ -73,7 +73,7 @@ export const AddRoom = () => {
             {errorMessage && (
               <div className="alert alert-danger fade show">{errorMessage}</div>
             )}
-            <form onSubmit={handleSubmit} className="">
+            <form onSubmit={handleSubmit}>
               <div className="mb-3">
                 <label htmlFor="roomType" className="form-label">
                   Room Type
