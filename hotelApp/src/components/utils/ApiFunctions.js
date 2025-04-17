@@ -91,8 +91,10 @@ export async function getRoomById(roomId){
 }
 
 /** 
- *Booking 
+ *Booking part
  **/
+
+ /*Save new booking*/
 export async function bookRoom(roomId, booking){
     try {
         const response = await api.post(`/bookings/room/${roomId}/booking`, booking)
@@ -106,6 +108,7 @@ export async function bookRoom(roomId, booking){
     }
 }
 
+/* Get All booking from the database */
 export async function getAllBookings(){
     try {
         const result = await api.get("/bookings/all-bookings")
@@ -115,6 +118,7 @@ export async function getAllBookings(){
     }
 }
 
+/** Get booking by the confirmationCode */
 export async function getBookingByConfirmationCode(confirmationCode){
     try {
         const result = await api.get(`bookings/confirmation/${confirmationCode}`)
@@ -128,6 +132,7 @@ export async function getBookingByConfirmationCode(confirmationCode){
     }
 }
 
+/**Cancel booking */
 export async function cancelBooking(bookingId) {
     try {
         const result = await api.delete(`bookings/booking/${bookingId}/delete`)
