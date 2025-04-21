@@ -31,6 +31,7 @@ const RoomTypeSelector = ({ handleRoomInputChange, newRoom }) => {
           <select
             name="roomType"
             id="roomType"
+            className="form-select"
             value={newRoom.roomType}
             onChange={(e) => {
               if (e.target.value === "Add new") {
@@ -49,20 +50,22 @@ const RoomTypeSelector = ({ handleRoomInputChange, newRoom }) => {
             ))}
           </select>
           {showNewRoomTypeInput && (
-            <div className="input-group">
-              <input
-                className="form-control"
-                type="text"
-                placeholder="Enter a new room type"
-                onChange={handleNewRoomTypeInputChange}
-              />
-              <button
-                className="btn btn-hotel"
-                type="button"
-                onClick={handleAddNewRoomType}
-              >
-                Add
-              </button>
+            <div className="mt-2">
+              <div className="input-group">
+                <input
+                  className="form-control"
+                  type="text"
+                  placeholder="Enter a new room type"
+                  onChange={handleNewRoomTypeInputChange}
+                />
+                <button
+                  className="btn btn-hotel"
+                  type="button"
+                  onClick={handleAddNewRoomType}
+                >
+                  Add
+                </button>
+              </div>
             </div>
           )}
         </div>

@@ -20,12 +20,21 @@ const RoomSearch = () => {
     e.preventDefault();
     const checkInMoment = moment(searchQuery.checkInDate);
     const checkOutMoment = moment(searchQuery.checkOutDate);
+
+    const showError = (message) => {
+      setErrorMessage(message);
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 3000);
+    };
+
     if (!checkInMoment.isValid() || !checkOutMoment.isValid()) {
-      setErrorMessage("Please enter valid dates");
+      showError("Please enter valid dates");
       return;
     }
+
     if (!checkOutMoment.isSameOrAfter(checkInMoment)) {
-      setErrorMessage("Check-out date must be after check-in date");
+      showError("Check-out date must be after check-in date");
       return;
     }
     setIsLoading(true);
@@ -40,6 +49,7 @@ const RoomSearch = () => {
       })
       .catch((error) => {
         console.log(error);
+        showError("An error occurred while fetching available rooms");
       })
       .finally(() => {
         setIsLoading(false);
@@ -122,7 +132,13 @@ const RoomSearch = () => {
             No rooms available for the selected dates and room type.
           </p>
         )}
-        {errorMessage && <p className="text-danger">{errorMessage}</p>}
+        {errorMessage && (
+          <div className="d-flex justify-content-center mt-3">
+            <p className="alert alert-danger text-center mb-0">
+              {errorMessage}
+            </p>
+          </div>
+        )}
       </Container>
     </>
   );
