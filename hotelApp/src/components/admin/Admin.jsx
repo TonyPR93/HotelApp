@@ -7,6 +7,7 @@ const Admin = () => {
       <h2>Welcome to admin panel</h2>
       <hr />
       <Link to={"/add-room"}> Manage Rooms</Link>
+      <Link to={"/existing-bookings"}> Manage Bookings</Link>
     </section>
   );
 };
